@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 
 int getEdad(int *pEdad);
@@ -35,10 +35,11 @@ int getEdad(int*pEdad)
              break;
             }
     }
-    else
-    {
-    printf("La edad esta fuera de rango");
-    }
+        else
+         {
+          printf("La edad esta fuera de rango");
+          __fpurge(stdin); // vaciamos standar imput
+         }
     }
  return retorno;
 }
