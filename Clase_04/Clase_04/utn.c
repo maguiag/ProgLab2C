@@ -45,16 +45,14 @@ int utn_getEntero (int* pNumero, int intentos, char* mensaje, char* error, int m
          printf(error);   // no es un numero
         }
     }
-    return retorno;
+    return retorno; // retorna si 0(ok) ó -1 (mal)
 }
 
 /** \brief pide flotante
   * \param puntero a numero, intentos, puntero a mensaje
  * \param puntero a mensaje de error, minimos, maximos
  * \return 0 para ok, -1 para error.
- *
- */
-
+  */
 
 int utn_getFloat (float* pNumero, int intentos, char* mensaje, char* error, int min,int max)
 {
@@ -86,6 +84,27 @@ int utn_getFloat (float* pNumero, int intentos, char* mensaje, char* error, int 
     return retorno;
 }
 
+
+int utn_getChar(char* pLetra, char* mensaje)
+{
+    char auxChar;
+    retorno=-1;
+    printf(mensaje);
+    if(scanf("%c",&auxChar)==1)
+    {
+        retorno=0;
+        break;
+    }
+    else
+    {
+        retorno=-1;
+    }
+    return retorno;
+}
+
+
+
+//
 static int getInt(int* pResultado)// solo resulta dentro de este archivo 0ok, -1 error
 {
     int auxResultado;
