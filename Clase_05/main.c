@@ -30,8 +30,6 @@ int main()
 }
 
 
-
-
 int mostrarArray(int* pArray,int limite) //o int pArray[]
 {
     int i;
@@ -85,10 +83,8 @@ int calcularMaximo(int* pArray, int limite )
                 else if(pArray[i]>maximo)
                     {
                         maximo=pArray[i];
-
                     }
             }
-
         }
         if(flagPrimerMaximo==0)
         {
