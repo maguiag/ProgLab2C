@@ -81,6 +81,37 @@ int utn_getFloat (float* pNumero, int intentos, char* mensaje, char* error, int 
     return retorno;
 }
 
+
+int ordenarArrray(int* pArray, int lenght,char sentido)//falta agregar lo que ess sentido
+{
+int i;
+int flag =1;
+int auxiliar;
+int retorno=-1;
+
+if(leghth>0)
+{
+ while(flag==1)
+    {
+        flag=0;
+        retorno=-1;
+        for(i=0; i<lenght;i++)
+        {
+            if(pArray[i]>pArray[i+1])
+            {
+                auxiliar=pArray[i];
+                pArray[i]=pArray[i+1];
+                pArray[i+1]=auxiliar;
+                flag=1;
+            }
+        }
+        retorno=0;
+    }
+}
+return retorno;
+
+}
+
 //
 static int getInt(int* pResultado)// solo resulta dentro de este archivo 0ok, -1 error
 {
@@ -156,3 +187,5 @@ static int getFloat(float* pResultado)// solo resulta dentro de este archivo 0 o
         }
     return retorno;
 }
+
+
