@@ -82,7 +82,31 @@ int utn_getFloat (float* pNumero, int intentos, char* mensaje, char* error, int 
 }
 
 
-int ordenarArrray(int* pArray, int lenght,char sentido)//falta agregar lo que ess sentido
+void ordenarArray(int*pArray, int limite, int flagmayormenor)
+
+{
+int flagnoterminedeordenar=1;
+    while(flagnoterminedeordenar==1)
+    {
+        for(i=0;i<limite-1;i++)
+    {
+        if(flagmayormenor==0&& (pArray[i]>pArray[i+1]))|| (flagmayormenor==1 && (pArray[i<pArray[i+1]]))
+        {
+            aux=pArray[i];
+            pArray[i]=pArray[i+1];
+            pArray[i+1]=aux;
+            flagnoterminedeordenar=1;
+
+        }
+    }
+
+}
+
+
+
+}
+
+int ordenarArrray(int* pArray, int lenght)//falta agregar sentido, para ordenar de <o>
 {
 int i;
 int flag =1;
@@ -95,6 +119,7 @@ if(leghth>0)
     {
         flag=0;
         retorno=-1;
+        //if(sentido==
         for(i=0; i<lenght;i++)
         {
             if(pArray[i]>pArray[i+1])
