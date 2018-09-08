@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "stdio_ext.h"
 #include "utn.h"
 /** \brief
  *
@@ -28,7 +29,7 @@ int utn_getEntero (int* pNumero, int intentos, char* mensaje, char* error, int m
         printf(mensaje);
         if(getInt(&auxNumero)==0)// get int retorna 0 si ok
         {
-            if(min<=auxNumero && auxNumero<=max)
+            if(auxNumero>=min && auxNumero<=max)
             {
                 *pNumero=auxNumero;
                 retorno=0;
@@ -45,11 +46,12 @@ int utn_getEntero (int* pNumero, int intentos, char* mensaje, char* error, int m
         {
          printf("Ingrese numero");
          printf(error);   // no es un numero
-         fflush(stdin);
+         __fpurge(stdin);
         }
     }
     return retorno; // retorna si 0(ok) ó -1 (mal)
 }
+
 
 /** \brief pide flotante
   * \param puntero a numero, intentos, puntero a mensaje
@@ -57,7 +59,7 @@ int utn_getEntero (int* pNumero, int intentos, char* mensaje, char* error, int m
  * \return 0 para ok, -1 para error.
   */
 
-int utn_getFloat (float* pNumero, int intentos, char* mensaje, char* error, int min,int max)
+int utn_getFloat (float* pNumero, int intentos, char* mensaje, char* error, int min, int max)
 {
     float auxNumero;
     int retorno =-1;
@@ -82,27 +84,26 @@ int utn_getFloat (float* pNumero, int intentos, char* mensaje, char* error, int 
         else
         {
          printf(error);   // no es un numero
-         fflush(stdin);
+         __fpurge(stdin);
         }
     }
     return retorno;
 }
 
 
+
 int utn_getChar(char* pLetra, char* mensaje)
 {
     char auxChar;
-    retorno=-1;
+    int retorno=-1;
     printf(mensaje);
+
     if(scanf("%c",&auxChar)==1)
     {
+        *pLetra=auxChar;
         retorno=0;
-        break;
     }
-    else
-    {
-        retorno=-1;
-    }
+
     return retorno;
 }
 
@@ -118,14 +119,12 @@ static int getInt(int* pResultado)// solo resulta dentro de este archivo 0ok, -1
     {
         *pResultado=auxResultado;
         retorno=0;
-        break;
+
     }
-    else
-        {
-            retorno=-1;
-        }
+
     return retorno;
 }
+
 
 static int getFloat(float* pResultado)// solo resulta dentro de este archivo 0 ok, -1 error
 {
@@ -136,11 +135,13 @@ static int getFloat(float* pResultado)// solo resulta dentro de este archivo 0 o
     {
         *pResultado=auxResultado;
         retorno=0;
-        break;
+
     }
-    else
-        {
-            retorno=-1;
-        }
+
     return retorno;
 }
+
+
+
+
+
