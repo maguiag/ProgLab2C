@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1536410328 source:/home/alumno/Escritorio/ProgLab2C-master/Repaso/main.c
+	<stdio.h>
+	<stdlib.h>
+	"utn.h"
+
+1536410301 /home/alumno/Escritorio/ProgLab2C-master/Repaso/utn.h
+
