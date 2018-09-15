@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1537023043 source:/home/alumno/Escritorio/ProgLab2C-master/Repaso-02.2/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1537023519 source:/home/alumno/Escritorio/ProgLab2C-master/Repaso-02.2/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

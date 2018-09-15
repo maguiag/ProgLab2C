@@ -3,5 +3,6 @@
 
 int utn_getEntero(int* pNumero, int intentos, char* mensaje, char* error, int min, int max);
 int utn_getFloat(float* pNumero, int intentos, char* mensaje, char* error, int min,int max);
+void getNombre(char* nombre);
 
 #endif // UTN_H_INCLUDED
