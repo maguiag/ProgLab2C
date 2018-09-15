@@ -44,6 +44,8 @@ int getEmail(char*email)
         }
         else
         {
+            strcpy(email,auxiliar);
+            retorno =0;
 
         }
     }
