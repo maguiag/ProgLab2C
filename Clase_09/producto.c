@@ -335,3 +335,19 @@ int cargarProducto(Producto* pBuffer, int indice) //pBUffer=auxiliar
     utn_getFloat(&pBuffer[indice].precio,3,"\nIngrese el precio", "\nError",0,9999999);//no es puntero por eso &!!!
     pBuffer[indice].isEmpty=0;
 }
+
+
+/*
+char auxDesc[32];
+char auxNOm[128];
+float auxPrecio;
+
+if(
+    if(utn_getStrin(auxNom))
+{
+    if(utn_getFloat(auxPrecio))
+        {
+            strncpy(productos[index].nombre,auxNom, 32);
+            strncpy(productos[index].descripcion,auxDesc,128);
+            productos[index].precio=auxPrecio;
+            productos[index].isEmpty=0;
