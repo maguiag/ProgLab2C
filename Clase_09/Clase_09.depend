@@ -1,5 +1,16 @@
 # depslib dependency file v1.0
-1537394578 source:/home/alumno/Escritorio/ProgLab2C-master/Clase_09/main.c
+1537398957 source:/home/alumno/Escritorio/Clase_09/main.c
 	<stdio.h>
 	<stdlib.h>
+	<stdio_ext.h>
+	<string.h>
+	"producto.h"
+
+1537398562 /home/alumno/Escritorio/Clase_09/producto.h
+
+1537399037 source:/home/alumno/Escritorio/Clase_09/producto.c
+	"producto.h"
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
 
