@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1537394578 source:/home/alumno/Escritorio/ProgLab2C-master/Clase_09/main.c
+	<stdio.h>
+	<stdlib.h>
+
