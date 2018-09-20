@@ -358,12 +358,12 @@ if(
 int printProducto(Producto* pBuffer, int limite)
 {
     int i;
-    for(i=; i<limite; i++)
+    for(i=0; i<limite; i++)
     {
         if (pBuffer[i].isEmpty==0)
         {
             printf("\nNombre: %s", pBuffer[i].nombre);
-            printf("\nDecripcion: %s", pBuffer[i.descripcion);
+            printf("\nDecripcion: %s", pBuffer[i].descripcion);
             printf("\nPrecio: %f",pBuffer[i].precio);
         }
     }
@@ -388,20 +388,19 @@ int buscarIsEmpty(Producto* pBuffer, int* indice, int limite)
 
 int menuProducto(int* opcion)
 {
-int aux;
+    int aux;
 
     do
     {   system("clear");//limpia pantalla
         printf("1- Cargar un producto\n");
         printf("2- Imprimir lista de productos\n");
         printf("3- Salir\n");
-        while(scanf("%d", aux)==0||aux>3)
+        while(scanf("%d",&aux)==0||aux<1||aux>3)
         {
             printf("\nError, ingrese opcion valida\n");
-
         }
 
-
+    *opcion=aux;
     }while(aux!=3);
-
+    return 0;
 }
