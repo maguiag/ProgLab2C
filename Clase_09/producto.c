@@ -2,6 +2,7 @@
 #include <stdio_ext.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 int inicializarArray(Producto* pBuffer, int limite)//
 {
@@ -12,15 +13,16 @@ int inicializarArray(Producto* pBuffer, int limite)//
         }
         return 0;
 }
+
 /* version profe
 
 sigue al for
 {
-productos[i].isEmpty=1;
-(productos+i)->isEmpty=1;
-(*(productos+i).isEmpty=1;
-*/
-
+    productos[i].isEmpty=1;
+    (productos+i)->isEmpty=1;
+    (*(productos+i).isEmpty=1;
+     */
+/**
 int imprimirArray(Producto* pBuffer, int limite)//
 {
     int i;
@@ -30,7 +32,7 @@ int imprimirArray(Producto* pBuffer, int limite)//
         }
         return 0;
 }
-
+*/
 
 static int getFloat(float*pBuffer);
 static int getString(char* bufferString,int limite);
@@ -328,12 +330,13 @@ int utn_altaPersona(Persona* pPersona,int reintentos,int lenString,int min,int m
 
 int cargarProducto(Producto* pBuffer, int indice) //pBUffer=auxiliar
 {
-    utn_getLetras(pBuffer[indice].nombre,32,3,"\nIngrese el nombre","\nError");
+    utn_getLetras(pBuffer[indice].nombre,32,3,"\nIngrese el nombre:  ","\nError");
     //utn_getLetras(pBuffer[indice].descripcion,128,3,"\nIngrese descripcion","\nError");
-    printf("\Ingrese la descripcion");
+    printf("\nIngrese la descripcion:  ");
     getString(pBuffer[indice].descripcion,128);
-    utn_getFloat(&pBuffer[indice].precio,3,"\nIngrese el precio", "\nError",0,9999999);//no es puntero por eso &!!!
+    utn_getFloat(&pBuffer[indice].precio,3,"\nIngrese el precio:  ", "\nError",0,9999999);//no es puntero por eso &!!!
     pBuffer[indice].isEmpty=0;
+    return 0;
 }
 
 
@@ -350,4 +353,55 @@ if(
             strncpy(productos[index].nombre,auxNom, 32);
             strncpy(productos[index].descripcion,auxDesc,128);
             productos[index].precio=auxPrecio;
-            productos[index].isEmpty=0;
+            productos[index].isEmpty=0;,
+*/
+int printProducto(Producto* pBuffer, int limite)
+{
+    int i;
+    for(i=; i<limite; i++)
+    {
+        if (pBuffer[i].isEmpty==0)
+        {
+            printf("\nNombre: %s", pBuffer[i].nombre);
+            printf("\nDecripcion: %s", pBuffer[i.descripcion);
+            printf("\nPrecio: %f",pBuffer[i].precio);
+        }
+    }
+
+    return 0;
+}
+
+int buscarIsEmpty(Producto* pBuffer, int* indice, int limite)
+{
+    int i;
+    for(i=0;i<limite; i++)
+    {
+        if(pBuffer[i].isEmpty==1)
+        {
+            *indice=i;
+            break;
+        }
+    }
+    return 0;
+}
+
+
+int menuProducto(int* opcion)
+{
+int aux;
+
+    do
+    {   system("clear");//limpia pantalla
+        printf("1- Cargar un producto\n");
+        printf("2- Imprimir lista de productos\n");
+        printf("3- Salir\n");
+        while(scanf("%d", aux)==0||aux>3)
+        {
+            printf("\nError, ingrese opcion valida\n");
+
+        }
+
+
+    }while(aux!=3);
+
+}

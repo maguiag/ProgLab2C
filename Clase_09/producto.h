@@ -12,7 +12,7 @@ typedef struct
 }Producto;
 
 int inicializarArray(Producto* pBuffer, int limite);
-int imprimirArray(Producto* pBuffer, int limite);//NO OLVIDAR ;;;;;;;;;
+//int imprimirArray(Producto* pBuffer, int limite);//NO OLVIDAR ;;;;;;;;;
 /**
     utn_getentero : Pide un numero entero al usuario
     @param pEdad : puntero a edad
@@ -89,5 +89,6 @@ int ordenarInsertion(int* pArray,int limite);
 //int printPersona(Persona* pBuffer);
 //int utn_altaPersona(Persona* pPersona,int reintentos,int lenString,int min,int max);
 
-
+int printProducto(Producto* pBuffer, int limite);
+int buscarIsEmpty(Producto* pBuffer, int* indice, int limite);
 #endif // PRODUCTO_H_INCLUDED

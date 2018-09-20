@@ -7,10 +7,13 @@
 
 int main()
 {
+    int indice;
     Producto productos[CANTIDAD];//P es la estruct; p es el array
-    inicializarArray(productos, CANTIDAD); //ARRAY, LIMITE
-    imprimirArray(productos,CANTIDAD);
-    cargarProducto(productos,5);
 
+    inicializarArray(productos, CANTIDAD); //ARRAY, LIMITE
+    //imprimirArray(productos,CANTIDAD);
+    printProducto(productos,1);// en el indice 1
+    cargarProducto(productos,5);
+    buscarIsEmpty(productos,&indice,CANTIDAD);//& xq voy a modificar
     return 0;
 }

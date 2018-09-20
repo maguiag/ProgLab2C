@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
-1537398957 source:/home/alumno/Escritorio/Clase_09/main.c
+1537403312 source:/home/alumno/Escritorio/Clase_09/main.c
 	<stdio.h>
 	<stdlib.h>
 	<stdio_ext.h>
 	<string.h>
 	"producto.h"
 
-1537398562 /home/alumno/Escritorio/Clase_09/producto.h
+1537403070 /home/alumno/Escritorio/Clase_09/producto.h
 
 1537399037 source:/home/alumno/Escritorio/Clase_09/producto.c
 	"producto.h"
