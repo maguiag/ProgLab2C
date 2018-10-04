@@ -127,22 +127,43 @@ int pantalla_ordenarPrecioNombre(Pantalla* arrayPantallas, int limiteArrayPantal
 }
 
 //g
-int informar_contrataciones(Contratacion* arrayContrat,int limiteContrat,Pantalla* arrayPant, int limitePant)
-{
-    int retorno;
-    int i;
-    int flagSwap;
-    Contratacion auxContrat;
-    Pantalla auxPant;
 
-    if(limiteContrat >0 && arrayContrat!=NULL)
+//InfoCliente Queda interna
+typedef struct
+{ // struct defino estructura //typedef define un dato exixtente
+
+ char cuit[50];
+ float importe;
+ int cantCont;
+ int isEmpty;
+
+}InfoCliente;
+
+infoCliente arrayIC[1000];
+//x eso no es informar
+static void initInfoCliente(Contratacion* arrayCont, int limiteCont,
+                           InfoCliente* arrayInfoC, int limiteInfoC)
+{int i;
+int proximoLibre=0;
+   for(i=0; i<limiteInfoC;i++)
+   {
+       arrayInfoC[i].isEmpty=1;
+   }
+    for(i=0;i<limiteCont; i++)
     {
+        if(!estaCuitEnInfoCliente())
+        {
+           proximoLibre++;
 
-        for()
+        }
     }
-
-
 }
-
-
-
+static void estaCuitEnInfoCliente(InfoCliente* arrayInfoC,int limiteinfoC)
+{
+  int i;
+  int retorno =0;
+  for(i=0; i<limiteinfoC;i++)
+  {
+       if(arrayInfoC[i])
+  }
+}
