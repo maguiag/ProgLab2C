@@ -147,3 +147,19 @@
 
 1525305074 d:\clase12\informar.h
 
+1538603763 source:c:\users\alumno\desktop\proglab2c-master\clase_13\contratacion.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"Contratacion.h"
+	"utn.h"
+	"pantalla.h"
+
+1538603763 c:\users\alumno\desktop\proglab2c-master\clase_13\contratacion.h
+	"pantalla.h"
+
+1538603763 c:\users\alumno\desktop\proglab2c-master\clase_13\pantalla.h
+
+1538603763 c:\users\alumno\desktop\proglab2c-master\clase_13\utn.h
+

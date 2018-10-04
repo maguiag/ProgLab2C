@@ -10,6 +10,10 @@
 #define QTY 10
 #define LEN_CONT    1000
 
+
+
+
+
 /*
 
 A. Realizar un solo listado de las pantallas ordenadas por los siguientes criterios:
