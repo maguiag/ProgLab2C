@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1538690335 source:/home/alumno/Descargas/paraParcial/amb/utn.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1538689530 /home/alumno/Descargas/paraParcial/amb/utn.h
+
+1538692814 source:/home/alumno/Escritorio/parcialAG/cliente.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+
+1538691956 /home/alumno/Escritorio/parcialAG/cliente.h
+
+1538695176 /home/alumno/Escritorio/parcialAG/utn.h
+
+1538694090 source:/home/alumno/Escritorio/parcialAG/utn.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1538693057 source:/home/alumno/Descargas/utn.c
+

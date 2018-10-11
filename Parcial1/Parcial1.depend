@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1539196094 source:c:\users\user\desktop\tp_laboratorio_1-\parcial1\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+
+1539173114 c:\users\user\desktop\tp_laboratorio_1-\parcial1\cliente.h
+
+1539171043 c:\users\user\desktop\tp_laboratorio_1-\parcial1\utn.h
+
+1539171043 source:c:\users\user\desktop\tp_laboratorio_1-\parcial1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
