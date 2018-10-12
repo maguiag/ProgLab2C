@@ -3,10 +3,12 @@
 int* newArray(int size);
 int initArray(int* arrayInt, int limite, int valor);
 int showArray(int* arrayInt, int limite);
+int redimensionarArray(int*arrayInt, int size);
 int deleteArray(int* arrayInt);
+
 int main()
 {
-    int* arrayEnteros;//puntero a int
+    int* arrayEnteros=NULL;//puntero a int
     newArray(100);
     initArray(arrayEnteros,100,1024);
     showArray(arrayEnteros,100);
@@ -24,7 +26,6 @@ int* newArray(int size) // contruye espacio en memoria par lo que yo quiero aloc
         if(auxiliarInt!=NULL)
         {
             retorno=auxiliarInt;
-
         }
     }
     return retorno;
@@ -71,5 +72,13 @@ int deleteArray(int* arrayInt)
     free(arrayInt);
     retorno=0;
     }
+    return retorno;
+}
+
+int redimensionarArray(int*arrayInt, int size)
+{
+    int retorno=-1;
+
+
     return retorno;
 }
