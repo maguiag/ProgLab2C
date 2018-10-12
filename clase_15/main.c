@@ -80,7 +80,7 @@ int reSizeArray(int*arrayInt, int size)
     int* retorno=NULL;
     if(arrayInt!=NULL && size>0)
     {
-        returno=(int*)realloc(arrayInt,sizeof(int)*size);
+        retorno=(int*)realloc(arrayInt,sizeof(int)*size);
 
     }
     return retorno;
