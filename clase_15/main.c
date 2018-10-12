@@ -3,7 +3,7 @@
 int* newArray(int size);
 int initArray(int* arrayInt, int limite, int valor);
 int showArray(int* arrayInt, int limite);
-int redimensionarArray(int*arrayInt, int size);
+int reSizeArray(int*arrayInt, int size);
 int deleteArray(int* arrayInt);
 
 int main()
@@ -75,10 +75,13 @@ int deleteArray(int* arrayInt)
     return retorno;
 }
 
-int redimensionarArray(int*arrayInt, int size)
+int reSizeArray(int*arrayInt, int size)
 {
-    int retorno=-1;
+    int* retorno=NULL;
+    if(arrayInt!=NULL && size>0)
+    {
+        returno=(int*)realloc(arrayInt,sizeof(int)*size);
 
-
+    }
     return retorno;
 }
