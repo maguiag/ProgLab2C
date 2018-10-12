@@ -14,7 +14,7 @@ int main()
         return 0;
 }
 
-int* newArray(int limite)
+int* newArray(int limite) // contruye espacio en memoria par lo que yo quiero alocar
 {
     int* retorno=NULL;
     int* auxiliarInt;
@@ -50,6 +50,7 @@ int showArray(int* arrayInt, int limite)
 {
    int retorno=-1;
    int i;
+   printf("\n---> i %p",&i);// direccion de memoria de i
     if(arrayInt!=NULL && limite>0)
     {
         for(i=;i<limite;i++)
@@ -60,16 +61,13 @@ int showArray(int* arrayInt, int limite)
     }
     return retorno;
 }
-int deleteArray(int* arrayInt, int limite)
+int deleteArray(int* arrayInt)
 {
    int retorno=-1;
-   int i;
-    if(arrayInt!=NULL && limite>0)
+   if(arrayInt!=NULL )
     {
-        for(i=;i<limite;i++)
-        {
-            printf("%p -[%d")
-        }
+    free(arrayInt);
+    retorno=0;
     }
     return retorno;
 }
