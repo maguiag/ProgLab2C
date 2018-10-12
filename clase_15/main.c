@@ -3,7 +3,7 @@
 int* newArray(int size);
 int initArray(int* arrayInt, int limite, int valor);
 int showArray(int* arrayInt, int limite);
-int deleteArray(int* arrayInt, int limite);
+int deleteArray(int* arrayInt);
 int main()
 {
     int* arrayEnteros;//puntero a int
@@ -14,7 +14,7 @@ int main()
         return 0;
 }
 
-int* newArray(int limite) // contruye espacio en memoria par lo que yo quiero alocar
+int* newArray(int size) // contruye espacio en memoria par lo que yo quiero alocar
 {
     int* retorno=NULL;
     int* auxiliarInt;
@@ -33,6 +33,7 @@ int* newArray(int limite) // contruye espacio en memoria par lo que yo quiero al
 int initArray(int* arrayInt, int limite,int valor)
 {
     int retorno=-1;
+    int i;
     if(arrayInt!=NULL && limite>0)
     {
         for(i=0; i<limite; i++)
@@ -53,7 +54,7 @@ int showArray(int* arrayInt, int limite)
    printf("\n---> i %p",&i);// direccion de memoria de i
     if(arrayInt!=NULL && limite>0)
     {
-        for(i=;i<limite;i++)
+        for(i=0;i<limite;i++)
         {
             printf("%p -[%d] - %d", (arrayInt+i),i,*(arrayInt+i));
         }
@@ -61,6 +62,7 @@ int showArray(int* arrayInt, int limite)
     }
     return retorno;
 }
+
 int deleteArray(int* arrayInt)
 {
    int retorno=-1;
