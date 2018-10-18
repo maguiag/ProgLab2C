@@ -9,14 +9,16 @@ typedef struct
     int idCliente;
     int isEmpty;
 }Cliente;
+static int proximoId();
+static int buscarLugarLibre(Cliente* arrayCliente,int limiteCliente);
+int cliente_init(Cliente* arrayCliente,int limiteCliente);
+int cliente_mostrarPorId(Cliente* arrayCliente,int limiteCliente,int idCliente);
+int cliente_mostrarDebug(Cliente* arrayCliente,int limiteCliente);
+int cliente_alta(Cliente* arrayCLiente,int limiteCliente);
+int cliente_baja(Cliente* arrayCliente,int limiteClienete,int idCliente);
+int cliente_modificacion(Cliente* arrayCliente,int limiteCliente,int idCliente);
+int cliente_ordenar(Cliente* arrayCliente,int limiteCliente,int orden);
+int cliente_altaForzada(Cliente* arrayCliente,int limiteCliente,char* nombre,char* apellido,char* cuit);
+int cliente_buscarPorId(Cliente* arrayCliente,int limiteCliente,int idCliente);
 
-int cliente_init(Cliente* array,int limite);
-int cliente_mostrarPorId(Cliente* array,int limite, int idCliente);
-int cliente_mostrarDebug(Cliente* array,int limite);
-int cliente_alta(Cliente* array,int limite);
-int cliente_baja(Cliente* array,int limite, int idCliente);
-int cliente_modificacion(Cliente* array,int limite, int idCliente);
-int cliente_ordenar(Cliente* array,int limite, int orden);
-int cliente_altaForzada(Cliente* array,int limite, char* nombre, char* apellido, char* cuit);
-int cliente_buscarPorId(Cliente* array,int limite, int idCliente);
 #endif // CLIENTE_H_INCLUDED

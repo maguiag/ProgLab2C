@@ -1,20 +1,56 @@
 # depslib dependency file v1.0
-1539196094 source:c:\users\user\desktop\tp_laboratorio_1-\parcial1\cliente.c
+1539901427 source:c:\users\user\desktop\parcial1\afiches.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"afiches.h"
+	"cliente.h"
+	"utn.h"
+
+1539902265 c:\users\user\desktop\parcial1\afiches.h
+	"cliente.h"
+
+1539901865 c:\users\user\desktop\parcial1\cliente.h
+
+1539171044 c:\users\user\desktop\parcial1\utn.h
+
+1539898875 source:c:\users\user\desktop\parcial1\informes.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<string.h>
 	"cliente.h"
 	"utn.h"
+	"informes.h"
 
-1539173114 c:\users\user\desktop\tp_laboratorio_1-\parcial1\cliente.h
+1539901398 c:\users\user\desktop\parcial1\informes.h
+	"utn.h"
+	"cliente.h"
+	"afiches.h"
 
-1539171043 c:\users\user\desktop\tp_laboratorio_1-\parcial1\utn.h
-
-1539171043 source:c:\users\user\desktop\tp_laboratorio_1-\parcial1\utn.c
+1539901444 source:c:\users\user\desktop\parcial1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<string.h>
+	"utn.h"
+	"cliente.h"
+	"afiches.h"
+	"informes.h"
+
+1539171044 source:c:\users\user\desktop\parcial1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1539901971 source:c:\users\user\desktop\parcial1\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
 	"utn.h"
 

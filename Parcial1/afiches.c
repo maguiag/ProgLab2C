@@ -6,8 +6,7 @@
 #include "cliente.h"
 #include "utn.h"
 
-static int proximoId();
-static int buscarLugarLibre(Afiches* array,int limite);
+
 
 
 /** \brief Inicializa la estructura afiches
@@ -16,16 +15,16 @@ static int buscarLugarLibre(Afiches* array,int limite);
  * \return int [0] OK [1] ERROR
  *
  */
-int afiches_init(Afiches* array,int limite)
+int afiches_init(Afiches* arrayAfiches,int limiteAfiches)
 {
-    int retorno = -1;
+    int retorno=-1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limiteAfiches>0 && arrayAfiches!=NULL)
     {
-        retorno = 0;
-        for(i=0;i<limite;i++)
+        retorno=0;
+        for(i=0;i<limiteAfiches;i++)
         {
-            array[i].isEmpty=1;
+            arrayAfiches[i].isEmpty=1;
         }
     }
     return retorno;
@@ -38,16 +37,16 @@ int afiches_init(Afiches* array,int limite)
  * \return int [0] OK [1] ERROR
  *
  */
-int afiches_mostrarDebug(Afiches* array,int limite)
+int afiches_mostrarDebug(Afiches* arrayAfiches,int limiteAfiches)
 {
-    int retorno = -1;
+    int retorno=-1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limiteAfiches>0 && arrayAfiches!=NULL)
     {
-        retorno = 0;
-        for(i=0;i<limite;i++)
+        retorno=0;
+        for(i=0;i<limiteAfiches;i++)
         {
-            printf("[DEBUG] - %d - %s - %d\n",array[i].idAfiche, array[i].nombreArchivo, array[i].isEmpty);
+            printf("[DEBUG] - %d - %s - %d\n",arrayAfiches[i].idAfiche,arrayAfiches[i].nombreArchivo,arrayAfiches[i].isEmpty);
         }
     }
     return retorno;
@@ -61,17 +60,17 @@ int afiches_mostrarDebug(Afiches* array,int limite)
  * \return int [0] OK [1] ERROR
  *
  */
-int afiches_mostrarPorId(Afiches* array,int limite, int idAfiche)
+int afiches_mostrarPorId(Afiches* arrayAfiches,int limiteAfiches,int idAfiche)
 {
-    int retorno = -1;
+    int retorno=-1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limiteAfiches>0 && arrayAfiches!=NULL)
     {
-        retorno = 0;
-        for(i=0;i<limite;i++)
+        retorno=0;
+        for(i=0;i<limiteAfiches;i++)
         {
-            if(!array[i].isEmpty && array[i].idCliente==idCliente)
-                printf("[RELEASE] -IdCliente: %d -Cant.archivos: %d -Nombre Archivo: %s -zona: %s -idArchivo: %d\n",array[i].idCliente, array[i].cantAfiches, array[i].nombreArchivo, array[i].zona, array[i].idAfiche);
+            if(!arrayAfiches[i].isEmpty && arrayAfiches[i].idCliente==idAfiche)
+                printf("[RELEASE] -IdCliente: %d -Cant.archivos: %d -Nombre Archivo: %s -zona: %s -idArchivo: %d\n",arrayAfiches[i].idCliente,arrayAfiches[i].cantAfiches,arrayAfiches[i].nombreArchivo,arrayAfiches[i].zona,arrayAfiches[i].idAfiche);
         }
     }
     return retorno;
@@ -81,23 +80,22 @@ int afiches_mostrarPorId(Afiches* array,int limite, int idAfiche)
  *
  * \param array Afiches* puntero al array y limite de afiches
  * \param puntero a clientes y limite clientes
- * \return int [0] OK [1] ERROR
+ * \return int [0] OK [-1] ERROR
  *
  */
- int afiches_alta(Afiches* array,int limiteAfiches, Cliente* pBuffer, int limiteCliente)
-
+int afiches_alta(Afiches* arrayAfiches,int limiteAfiches, Cliente* pBuffer, int limiteCliente)
 {
-    int retorno = -1;
+    int retorno=-1;
     int i;
     char idCliente;
     int auxCant;
     char auxArchivo[51];
     char auxZona[51];
 
-    if((limite > 0 && array != NULL) && (limiteCliente>0 && pBuffer !=NULL))
+    if((limiteCliente>0 && arrayAfiches!=NULL) && (limiteCliente>0 && pBuffer!=NULL))
     {
-        i = buscarLugarLibre(array,limite);
-        if(i >= 0)
+        i=buscarLugarLibre(arrayAfiches,limiteCliente);
+        if(i>=0)
         {
             if(!getValidString("\nIngrese IdCliente: ","\nSolo numeros","El maximo es 11",pBuffer,100,2))
                 do
@@ -108,34 +106,32 @@ int afiches_mostrarPorId(Afiches* array,int limite, int idAfiche)
                         {
                             if(!getValidString("\nIngrese la zona ","\nError","El maximo es 50",auxZona,100,2))
                             {
+                                strcpy(arrayAfiches[i].cantAfiches,auxCant);
+                                strcpy(arrayAfiches[i].nombreArchivo,auxArchivo);
+                                strcpy(arrayAfiches[i].zona,auxZona);
+                                arrayAfiches[i].idAfiche=proximoId();
+                                arrayAfiches[i].isEmpty=0;
                                 retorno = 0;
-                                strcpy(array[i].cantAfiches,auxCant);
-                                strcpy(array[i].nombreArchivo,auxArchivo);
-                                strcpy(array[i].zona,auxZona);
-                                array[i].idAfiche = proximoId();
-                                array[i].isEmpty = 0;
-
                             }
-
                         }
                     }
                 }
-                while( array[i].idCliente==pBuffer[i].idCliente && pBuffer !=NULL && limiteC>0)
-
-                }
-            else
-            {
-                retorno = -3;
-            }
+                while( arrayAfiches[i].idCliente==pBuffer[i].idCliente && pBuffer!=NULL && limiteCliente>0);
         }
         else
         {
-            retorno = -2;
+            retorno=-2;
         }
-
     }
-    return retorno;
+    else
+    {
+        retorno = -3;
+    }
+return retorno;
 }
+
+
+
 
 
 /** \brief Da de baja al fiche por el ID
@@ -146,19 +142,19 @@ int afiches_mostrarPorId(Afiches* array,int limite, int idAfiche)
  * \return int [0] OK [1] ERROR
  *
  */
-int afiches_baja(Afiches* array,int limite, int idAfiche)
+int afiches_baja(Afiches* arrayAfiches,int limiteAfiches,int idAfiche)
 {
-    int retorno = -1;
+    int retorno=-1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limiteAfiches>0 && arrayAfiches!=NULL)
     {
-        retorno = -2;
-        for(i=0;i<limite;i++)
+        retorno=-2;
+        for(i=0;i<limiteAfiches;i++)
         {
-            if(!array[i].isEmpty && array[i].idAfiche==idAfiche)
+            if(!arrayAfiches[i].isEmpty && arrayAfiches[i].idAfiche==idAfiche)
             {
-                array[i].isEmpty = 1;
-                retorno = 0;
+                arrayAfiches[i].isEmpty=1;
+                retorno=0;
                 break;
             }
         }
@@ -264,22 +260,24 @@ int cliente_modificacion(Cliente* array,int limite, int idCliente)
  *
  */
 
-static int buscarLugarLibre(Afiches* array,int limite)
+static int buscarLugarLibre(Afiches* arrayAfiches,int limiteAfiches,int indice)
 {
-    int retorno = -1;
     int i;
-    if(limite > 0 && array != NULL)
-    {
-        for(i=0;i<limite;i++)
+    int retorno=-1;
+    if(arrayAfiches!=NULL && limiteAfiches>0)
         {
-            if(array[i].isEmpty==1)
+        for(i=0;i<limiteAfiches;i++)
+        {
+            if(arrayAfiches[i].isEmpty==1)
             {
-                retorno = i;
+                *indice=i;
+                retorno=0;
                 break;
             }
         }
     }
-    return retorno;
+return retorno;
+
 }
 
 
@@ -305,25 +303,24 @@ static int proximoId()
  * \return int [0] OK [1] ERROR
  *
  */
-int afiches_altaForzada(Afiches* array,int limite, char* cantidad, char* nombreArch, char* auxZona)
+int afiches_altaForzada(Afiches* arrayAfiches,int limiteAfiches,char* cantidad,char* nombreArch,char* auxZona)
 {
-
-    int retorno = -1;
+    int retorno=-1;
     int i;
 
-    if(limite > 0 && array != NULL)
+    if(limiteAfiches>0 && arrayAfiches!=NULL)
     {
-        i = buscarLugarLibre(array,limite);
-        if(i >= 0)
+        i=buscarLugarLibre(arrayAfiches,limiteAfiches);
+        if(i>=0)
         {
-            retorno = 0;
-            strcpy(array[i].cantAfiches,cantidad);
-            strcpy(array[i].nombreArchivo,nombreArch);
-            strcpy(array[i].zona,auxZona);
-            array[i].idCliente = proximoId();
-            array[i].isEmpty = 0;
+            retorno=0;
+            strcpy(arrayAfiches[i].cantAfiches,cantidad);
+            strcpy(arrayAfiches[i].nombreArchivo,nombreArch);
+            strcpy(arrayAfiches[i].zona,auxZona);
+            arrayAfiches[i].idCliente=proximoId();
+            arrayAfiches[i].isEmpty=0;
         }
-        retorno = 0;
+        retorno=0;
     }
     return retorno;
 }
@@ -336,16 +333,16 @@ int afiches_altaForzada(Afiches* array,int limite, char* cantidad, char* nombreA
  * \return int retorna un entero que corresponde a la posicion en la que se encuentra ese Id
  *
  */
-int afiches_buscarPorIdAfiche(Afiches* array,int limite, int idAfiche)
+int afiches_buscarPorIdAfiche(Afiches* arrayAfiches,int limiteAfiches,int idAfiche)
 {
-    int retorno = -1;
+    int retorno=-1;
     int i;
-    if(limite > 0 && array != NULL)
+    if(limiteAfiches>0 && arrayAfiches!=NULL)
     {
-        retorno = -2;
-        for(i=0;i<limite;i++)
+        retorno=-2;
+        for(i=0;i<limiteAfiches;i++)
         {
-            if(!array[i].isEmpty && array[i].idAfiche==idAfiche)
+            if(!arrayAfiches[i].isEmpty && arrayAfiches[i].idAfiche==idAfiche)
             {
                 retorno=i;
                 break;
@@ -363,19 +360,21 @@ int afiches_buscarPorIdAfiche(Afiches* array,int limite, int idAfiche)
  *
  */
 
-int afiches_cobrar(Afiches* arrayAfiches, int limiteAfiche, Cliente* pBuffer, int limiteCliente, int id, int *indice)
+int afiches_cobrar(Afiches* arrayAfiches,int limiteAfiches,Cliente* pBuffer,int limiteCliente,int id,int *indice)
 {
-    int i,j;
+    int i;
+    int j;
     int retorno=-1;
-    if(arrayAfi!=NULL&&limiteAfiche>0&& pBuffer!= NULL && limiteCliente>0)
+
+    if(arrayAfiches!=NULL && limiteAfiches>0 && pBuffer!=NULL && limiteCliente>0)
         {
-        for(i=0;i<limiteAfiche;i++)
+        for(i=0;i<limiteAfiches;i++)
         {
-            if(arrayAfi[i].id==id)
+            if(arrayAfiches[i].idAfiche==id)
             {
-                for(j=0;j<limiteCli;j++)
+                for(j=0;j<limiteCliente;j++)
                 {
-                    if(arrayAfi[i].idCliente==pBuffer[i].idCliente&& !arrayAfi[i].isEmpty)
+                    if(arrayAfiches[i].idCliente==pBuffer[i].idCliente && !arrayAfiches[i].isEmpty)
                     {
                         printf("\nIdCliente: %d",pBuffer[i].idCliente);
                         printf("\nNombre: %s",pBuffer[i].nombre);
@@ -400,18 +399,20 @@ return retorno;
  *
  */
 
-
-int afiches_aCobrarByIdCliente(Afiches* array,int limite,int idCliente)
+int afiches_aCobrarByIdCliente(Afiches* arrayAfiches,int limiteAfiches,int idCliente)
 {
     int i;
-    int retorno=0;
-    for(i=0;i<limite;i++){
-        if(array[i].idCliente==idCliente&& array[i].estado==1 && !array[i].isEmpty)
-            {
-            retorno++;
+    int retorno=-1;
+    int aCobrar=0;
+    for(i=0; i<limiteAfiches; i++)
+    {
+        if(arrayAfiches[i].idCliente==idCliente && arrayAfiches[i].estado==1 && !arrayAfiches[i].isEmpty)
+        {
+            aCobrar++;
+            retorno=0;
         }
     }
-return retorno:
+  return retorno;
 }
 
 /** \brief lista afiches
@@ -422,49 +423,37 @@ return retorno:
  *
  */
 
-int afiches_listado(Afiches* array,int limite)
+int afiches_listado(Afiches* arrayAfiches,int limiteAfiches)
 {
     int i;
     int retorno=-1;
-    if(array!=NULL&&limite>0)
+    if(arrayAfiches!=NULL && limiteAfiches>0)
+    {
+        for(i=0;i<limiteAfiches;i++)
         {
-        for(i=0;i<limite;i++)
-        {
-            if(array[i].isEmpty==0)
-                {
+            if(arrayAfiches[i].isEmpty==0)
+            {
                 retorno=0;
-                printf("\nIdCliente: %d",array[i].idCliente);
-                printf("\nIdAfiche: %d",array[i].idAfiche);
-                printf("\nCantidad Afiches: %d",array[i].cantAfiches);
-                printf("\nNombreArchivo: %s",array[i].nombreArchivo);
-                printf("\nEStado (0  cobrada, 1 por cobrar): %s",array[i].estado);
-                switch (array[i].zona)
-                {
-                    case 1:
-                        printf("\nCABA");
-                        break;
-                    case 2:
-                        printf("\nZona oeste");
-                        break;
-                    case 3:
-                        printf("\nZona sur");
-                    break;
-                }
-                           }
+                printf("\nIdCliente: %d",arrayAfiches[i].idCliente);
+                printf("\nIdAfiche: %d",arrayAfiches[i].idAfiche);
+                printf("\nCantidad Afiches: %d",arrayAfiches[i].cantAfiches);
+                printf("\nNombreArchivo: %s",arrayAfiches[i].nombreArchivo);
+                printf("\nEStado (0 cobrada, 1 por cobrar): %s",arrayAfiches[i].estado);
+            }
         }
     }
     return retorno;
 }
 
-int afiches_cambiarEstado(Afiches* array, int limite)
+int afiches_cambiarEstado(Afiches* arrayAfiches,int limiteAfiches)
 {
     int i;
-    int retorno =-1;
-    if(array!=NULL && limite>0)
+    int retorno=-1;
+    if(arrayAfiches!=NULL && limiteAfiches>0)
     {
-        if(array[i].estado==1)
+        if(arrayAfiches[i].estado==1)
         {
-           array[i].estado=0;
+           arrayAfiches[i].estado=0;
            printf("EStado de la venta: Cobrada");
         }
     }
@@ -479,22 +468,203 @@ int afiches_cambiarEstado(Afiches* array, int limite)
  *
  */
 
-int afiches_editar(Afiches* array,int id,int limite,int cantAfiches,int zona)
+int afiches_editar(Afiches* arrayAfiches,int id,int limiteAfiches,int cantAfiches,int zona)
 {
     int i;
     int retorno=-1;
-    if(array!=NULL && limite>0 )
+    if(arrayAfiches!=NULL && limiteAfiches>0)
         {
-        for (i=0;i<limite;i++)
+        for (i=0;i<limiteAfiches;i++)
         {
-            if(array[i].id==id)
+            if(!arrayAfiches[i].isEmpty && arrayAfiches[i].idAfiche==id)
             {
-                array[i].cantAfiches=cantAfiches;
-                array[i].zona=zona;
+                arrayAfiches[i].cantAfiches=cantAfiches;
+                arrayAfiches[i].zona=zona;
                 retorno=0;
                 break;
             }
         }
     }
     return retorno;
+}
+
+/** \brief imprime listado a cobrar
+ *
+ * \param cliente y su limite
+ * \param afiches y su limite
+ * \return [-1] si mal, [0] si ok
+ *
+ */
+
+int informe_clientesAcobrar(Cliente* arrayClientes,int limiteClientes,Afiches* pBuffer,int limiteAfiches)
+{
+    int i;
+    int retorno=-1;
+
+    int afichesAcobrar=0;;
+    if(arrayClientes!=NULL && limiteClientes>0 && pBuffer!=NULL && limiteAfiches>0)
+        {
+        for(i=0;i<limiteClientes;i++)
+            {
+            if(!pBuffer[i].isEmpty)
+            {
+                printf("\nIdCLIENTE: %d",arrayClientes[i].idCliente);
+                printf("\nNombre: %s",arrayClientes[i].nombre);
+                printf("\nApellido: %s",arrayClientes[i].apellido);
+                printf("\nCuit: %s",arrayClientes[i].cuit);
+                afichesAcobrar=afiches_cantidadACobrarByIdCliente(pBuffer,limiteAfiches,pBuffer[i].idCliente);
+                printf("\nVentas a cobrar: %d",afichesAcobrar);
+                retorno=0;
+            }
+        }
+    }
+return retorno;
+}
+/** \brief cant gral de afiches
+ *
+ * \param puntero array afiches
+ * \param limite afiches
+ * \return cantidad afiches
+ *
+ */
+
+int afiches_cantidadAfiches(Afiches* arrayAfiches,int limiteAfiches)
+{
+     int i;
+    int cantidad=0;
+    if(arrayAfiches!=NULL && limiteAfiches>0)
+        {
+        for(i=0;i<limiteAfiches;i++)
+        {
+            if(!arrayAfiches[i].isEmpty)
+            {
+                cantidad=cantidad+arrayAfiches[i].cantAfiches;
+            }
+        }
+    }
+return cantidad;
+}
+
+/** \brief afiches por cliente
+ *
+ * \param puntero a array CLIENTE, su limite
+ * \param id cliente
+ * \return cantidad de afiches
+ *
+ */
+
+int afiches_cantidadByIdCliente(Afiches* arrayAfiches,int limiteAfiches,int idCliente)
+{
+    int i;
+    int cantidad=0;
+    if(arrayAfiches!=NULL && limiteAfiches>0)
+        {
+        for(i=0;i<limiteAfiches;i++)
+            {
+            if((!arrayAfiches[i].isEmpty && arrayAfiches[i].idCliente==idCliente && arrayAfiches[i].estado==1)||
+            (arrayAfiches[i].idCliente==idCliente && arrayAfiches[i].estado==0))
+            {
+                cantidad++;
+            }
+        }
+    }
+return cantidad;
+
+}
+/** \brief a cobrar segun cliente
+ *
+ * \param puntero a afiches y su limite
+ * \param id cliente
+ * \return cantidad a cobrar
+ *
+ */
+
+int afiches_cantidadACobrarByIdCliente(Afiches* arrayAfiches,int limiteAfiches,int idCliente)
+{
+    int i;
+    int cantidad=0;
+    if(arrayAfiches!=NULL && limiteAfiches>0)
+        {
+        for(i=0;i<limiteAfiches;i++){
+            if(!arrayAfiches[i].isEmpty && arrayAfiches[i].idCliente==idCliente){
+                cantidad = cantidad + arrayAfiches[i].cantAfiches;
+            }
+        }
+    }
+return cantidad;
+}
+
+/** \brief ventas por Clientes
+ *
+ * \param puntero a afiches y su limite
+ * \param id cliente
+ * \return cantidad de ventas por clientes
+ *
+ */
+
+int afiches_cantidadDeVentasByIdCliente(Afiches* arrayAfiches,int limiteAfiches,int idCliente)
+{
+    int i;
+    int cantidad=0;
+    if(arrayAfiches!=NULL && limiteAfiches>0)
+        {
+        for(i=0;i<limiteAfiches;i++)
+        {
+            if(!arrayAfiches[i].isEmpty && arrayAfiches[i].idCliente==idCliente && arrayAfiches[i].estado==1)
+            {
+                cantidad=cantidad+arrayAfiches[i].cantAfiches;
+            }
+        }
+    }
+return cantidad;
+}
+
+/** \brief ventas totales
+ *
+ * \param puntero a afiches y su limite
+ * \param id cliente
+ * \return cant de ventas
+ *
+ */
+
+int afiches_VentasTotales(Afiches* arrayAfiches,int limiteAfiches,int idCliente)
+{
+    int i;
+    int cantidad=0;
+    if(arrayAfiches!=NULL && limiteAfiches>0)
+        {
+        for(i=0;i<limiteAfiches;i++)
+        {
+            if(!arrayAfiches[i].isEmpty && arrayAfiches[i].idCliente==idCliente )
+            {
+                cantidad++;
+            }
+        }
+    }
+return cantidad;
+}
+/** \brief cantidad de afciches por zona
+ *
+ * \param puntero array afiches y su limite
+ * \param zona
+ * \return cantidad por zona
+ *
+ */
+
+int afiches_cantidadAfichesByZona(Afiches* arrayAfiches,int limiteAfiches)
+{
+    int i;
+    int cantidad=0;
+    int zona;
+    if(arrayAfiches!=NULL && limiteAfiches>0)
+        {
+        for(i=0;i<limiteAfiches;i++)
+        {
+            if(!arrayAfiches[i].isEmpty && arrayAfiches[i].zona==zona)
+            {
+                cantidad=cantidad+arrayAfiches[i].cantAfiches;
+            }
+        }
+    }
+return cantidad;
 }
