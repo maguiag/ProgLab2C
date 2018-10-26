@@ -1,0 +1,5 @@
+typedef struct{
+int idCliente;
+char nombre[50];
+char apellido[50];
+}Cliente;
