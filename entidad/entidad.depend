@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1539825315 source:/home/profesor/Ernesto/LABO1/Clase09/entidad/main.c
+	<stdio.h>
+	<stdlib.h>
+	"empleado.h"
+
+1539825352 /home/profesor/Ernesto/LABO1/Clase09/entidad/empleado.h
+
+1539825388 source:/home/profesor/Ernesto/LABO1/Clase09/entidad/empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
