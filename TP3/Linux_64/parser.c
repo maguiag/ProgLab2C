@@ -49,7 +49,13 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
  */
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-
+Employee *pEmpleado; // ver si es razonable sumar funcion de validacion
+//fc de consistencia !!!
+    do
+    {   pEmpleado=employee_new(); //distinto parametro xq no lo tengo
+        fread(pEmpleado,sizeof(Employee),1,pFile);// pide donde dejo, no origen
+            ll_add(pArrayListEmployee,)
+    }while(!feof(pFile));
     return 1;
 }
 

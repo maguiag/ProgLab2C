@@ -32,7 +32,7 @@ int main()
                 controller_loadFromText("data.csv",listaEmpleados);
                 break;
             case 2:
-                controller_loadFromBinary(); //
+                controller_loadFromBinary("data.bin",listaEmpleados); //
                 break;
             case 3:
                 controller_addEmployee(listaEmpleados);
@@ -45,6 +45,7 @@ int main()
                 break;
             case 6:
                 controller_ListEmployee(listaEmpleados);
+                //controller_saveAsBinary("data.bin",listaEmpleados)
                 break;
             case 7:
                 controller_sortEmployee(listaEmpleados);

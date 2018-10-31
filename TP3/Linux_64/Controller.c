@@ -13,7 +13,22 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+
+    int retorno=0;
+    FILE* pArchivoEmployee;
+    pArchivoEmployee=fopen("data.csv","r");
+    if(parser_EmployeeFromText(pArchivoEmployee,pArrayListEmployee))
+    {
+        retorno=1;
+    }
+    else
+    {
+        printf("Error de Archivo");
+    }
+    fclose(pArchivoEmployee);
+
+    return retorno;
+
 }
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
@@ -25,7 +40,12 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno=-1;
+    FILE * pArchivo;
+    pArchivo=fopen(path, "r");
+    retorno=parser_EmployeeFromBinary(pArchivo,pArrayListEmployee);
+    fclose(pArchivo);
+    return retorno;
 }
 
 /** \brief Alta de empleados
@@ -109,6 +129,20 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
+    FILE *pArchivo = fopen(path,"wb"); //wb write en binary
+    Employee* pEmpleado;
+    int i;
+    int lenArray=ll_len(pArrayListEmployee);
+    if(pArchivo != NULL)
+    {
+        for(i=0;i<lenArray;i++)
+        {
+        pEmpleado=ll_get(pArrayListEmployee,i);
+        fwrite(pEmpleado,sizeof(Employee),1,pArchivo);
+        //*a lo q uiero volcar(empleado), cuanto pesa,cuantos empleados!nunca en len de a 1,donde lo escribo
+        }
+
+    }
     return 1;
 }
 
