@@ -29,6 +29,7 @@ int main()
         {
         //en cada case llamo a fc controller
             case 1:
+            printf("\Tamaño de lista %d", ll_len(listaEmpleados));
                 controller_loadFromText("data.csv",listaEmpleados);
                 break;
             case 2:
@@ -44,6 +45,7 @@ int main()
                 controller_removeEmployee(listaEmpleados);
                 break;
             case 6:
+                ll_sort(listaEmpleados, employee_criterioSortNombre())
                 controller_ListEmployee(listaEmpleados);
                 //controller_saveAsBinary("data.bin",listaEmpleados)
                 break;

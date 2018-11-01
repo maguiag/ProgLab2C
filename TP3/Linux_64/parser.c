@@ -12,32 +12,51 @@
  */
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-    int flag=1;
-    FILE* pFile = fopen("data.csv",w);
-    char* pBufferId[1024];
-    char* pNombre[1024];
-    char* pHorasTrabajadas[1024];
-    char* pSueldo[1024];
 
-    do
+    char bufferInt[1024];
+    char bufferNombre[1024];
+    char bufferHorasTrabajadas[1024];
+    char bufferSueldo[1024];
+    int retorno = -1;
+    int flagOnce=1;
+    Employee * pEmpleado;
+
+
+    if(pFile != NULL)
     {
-        fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",pBufferId,
-                                                    pNombre,
-                                                    pHorasTrabajadas,
-                                                    pSueldo);
-        // leer cada linea crear new wpleado por linea fcanf *archvo
-       if(flag==1)
-       {
-       flag =0;
-       continue;
-       }
+        while(!feof(pFile))
+        {
+            if(flagOnce)
+            {
+                flagOnce = 0;
+                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",
+                                        bufferInt,
+                                        bufferNombre,
+                                        bufferHorasTrabajadas,
+                                        bufferSueldo);
+            }
+            fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",
+                                        bufferInt,
+                                        bufferNombre,
+                                        bufferHorasTrabajadas,
+                                        bufferSueldo);
+            //printf("\n%s",bufferNombre);
 
-        //Employee* e
+            pEmpleado = employee_newConParametros(
+                                        bufferInt,
+                                        bufferNombre,
+                                        bufferHorasTrabajadas,
+                                        bufferSueldo);
 
-    }while(!feof(pFile));
-    else
-    break;
-    return 1;
+            if(pEmpleado != NULL)
+            {
+                retorno = 0;
+                ll_add(pArrayListEmployee,pEmpleado);
+            }
+
+        }
+    }
+    return retorno;
 }
 
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo binario).
@@ -49,30 +68,32 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
  */
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-Employee *pEmpleado; // ver si es razonable sumar funcion de validacion
+    Employee *pEmpleado; // ver si es razonable sumar funcion de validacion
 //fc de consistencia !!!
     do
-    {   pEmpleado=employee_new(); //distinto parametro xq no lo tengo
+    {
+        pEmpleado=employee_new(); //distinto parametro xq no lo tengo
         fread(pEmpleado,sizeof(Employee),1,pFile);// pide donde dejo, no origen
-            ll_add(pArrayListEmployee,)
-    }while(!feof(pFile));
+        ll_add(pArrayListEmployee,pEmpleado)
+    }
+    while(!feof(pFile));
     return 1;
 }
 
 /*
-Cliente *auxiliarPunteroCliente;
+Employee * pEmpleado;
     int size=0;
-    FILE* pArchivoCliente;
-    char bufferId[1024];
+    char bufferInt[1024];
     char bufferNombre[1024];
-    char bufferApellido[1024];
-    char bufferIsEmpty[1024];
+    char bufferHorasTrabajadas[1024];
+    char bufferSueldo[1024];
     int flagOnce=1;
+    int rerono =-1
 
-    pArchivoCliente = fopen("data.csv","r");
-    while(!feof(pArchivoCliente))
+
+  if(pFile!=NULL)
     {
-        if(flagOnce)
+        while(!feof(pFile))
         {
             fscanf(pArchivoCliente,"%s\n",bufferId);
             flagOnce = 0;

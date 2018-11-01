@@ -133,8 +133,22 @@ int Employee_getSueldo(Employee* this,int* sueldo)
  {
  char nombreA[100];
  char nombreB[100];
+ int retorno =0;
 
- employee_getNombre();
- employee_getNombre()
+    employee_getNombre(thisA,nombreA);
+    employee_getNombre(thisB,nombreB);
 
+
+    if(strcmp(nombreA,nombreB) > 0)
+    {
+       // printf("\nMAYOR");
+        retorno = 1;
+    }
+    else if(strcmp(nombreA,nombreB) < 0)
+    {
+       // printf("\nMENOR");
+        retorno = -1;
+    }
+
+    return retorno;
  }

@@ -93,6 +93,24 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
+    int retorno=-1;
+    int i;
+    void* pEmpleado;
+    char nombre[50];
+    if(pArrayListEmployee != NULL)
+    {
+        retorno = 0;
+        for(i=0;i < ll_len(pArrayListEmployee);i++)
+        {
+            pEmpleado = ll_get(pArrayListEmployee,i);
+            employee_getNombre(pEmpleado,nombre);
+            printf("\nNombre: %s", nombre);
+        }
+    }
+    return retorno;
+
+
+
     return 1;
 }
 
