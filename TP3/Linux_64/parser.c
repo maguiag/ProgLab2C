@@ -12,7 +12,6 @@
  */
 int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-
     char bufferInt[1024];
     char bufferNombre[1024];
     char bufferHorasTrabajadas[1024];
@@ -20,7 +19,6 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
     int retorno = -1;
     int flagOnce=1;
     Employee * pEmpleado;
-
 
     if(pFile != NULL)
     {
@@ -53,7 +51,6 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
                 retorno = 0;
                 ll_add(pArrayListEmployee,pEmpleado);
             }
-
         }
     }
     return retorno;

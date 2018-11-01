@@ -13,10 +13,10 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
-
     int retorno=0;
     FILE* pArchivoEmployee;
     pArchivoEmployee=fopen("data.csv","r");
+
     if(parser_EmployeeFromText(pArchivoEmployee,pArrayListEmployee))
     {
         retorno=1;
@@ -28,7 +28,6 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
     fclose(pArchivoEmployee);
 
     return retorno;
-
 }
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo binario).
@@ -97,6 +96,7 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
     int i;
     void* pEmpleado;
     char nombre[50];
+
     if(pArrayListEmployee != NULL)
     {
         retorno = 0;
@@ -108,10 +108,6 @@ int controller_ListEmployee(LinkedList* pArrayListEmployee)
         }
     }
     return retorno;
-
-
-
-    return 1;
 }
 
 /** \brief Ordenar empleados
@@ -151,6 +147,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
     Employee* pEmpleado;
     int i;
     int lenArray=ll_len(pArrayListEmployee);
+
     if(pArchivo != NULL)
     {
         for(i=0;i<lenArray;i++)
@@ -159,7 +156,6 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
         fwrite(pEmpleado,sizeof(Employee),1,pArchivo);
         //*a lo q uiero volcar(empleado), cuanto pesa,cuantos empleados!nunca en len de a 1,donde lo escribo
         }
-
     }
     return 1;
 }

@@ -121,6 +121,7 @@ int Employee_setSueldo(Employee* this,int sueldo)
 int Employee_getSueldo(Employee* this,int* sueldo)
 {
     int retorno=-1;
+
     if(this!=NULL)
     {
         *sueldo=this->sueldo;
@@ -131,13 +132,12 @@ int Employee_getSueldo(Employee* this,int* sueldo)
 
  int employee_criterioSortNombre(void* thisA, void* thisB)
  {
- char nombreA[100];
- char nombreB[100];
- int retorno =0;
+    char nombreA[100];
+    char nombreB[100];
+    int retorno =0;
 
     employee_getNombre(thisA,nombreA);
     employee_getNombre(thisB,nombreB);
-
 
     if(strcmp(nombreA,nombreB) > 0)
     {
