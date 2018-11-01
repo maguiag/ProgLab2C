@@ -129,7 +129,7 @@ int Employee_getSueldo(Employee* this,int* sueldo)
     return retorno;
 }
 
- int employee_criterioSortNombre(void* thisA, void thisB)
+ int employee_criterioSortNombre(void* thisA, void* thisB)
  {
  char nombreA[100];
  char nombreB[100];

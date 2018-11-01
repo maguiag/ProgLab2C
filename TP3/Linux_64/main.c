@@ -38,14 +38,14 @@ int main()
             case 3:
                 controller_addEmployee(listaEmpleados);
                 break;
-            case 4;
+            case 4:
                 controller_editEmployee(listaEmpleados);
                 break;
             case 5:
                 controller_removeEmployee(listaEmpleados);
                 break;
             case 6:
-                ll_sort(listaEmpleados, employee_criterioSortNombre())
+                ll_sort(listaEmpleados, employee_criterioSortNombre());
                 controller_ListEmployee(listaEmpleados);
                 //controller_saveAsBinary("data.bin",listaEmpleados)
                 break;
