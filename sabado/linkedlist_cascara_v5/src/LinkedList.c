@@ -54,6 +54,19 @@ int ll_len(LinkedList* this)
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
     Node* pNode = NULL;
+    lenght=ll_len(this); //utilizo ll_len que retorna cantidad de elem de la lista
+    int i;
+    if(this!=NULL && nodeIndex>0 && nodeIndex<lenght)
+    // que la llllista no sea nula/indice nodo mayor a cero/indice nodo menor tamaño que largo de lista
+    {
+
+
+
+
+
+
+        pNode=
+    }
 
     return pNode;
 }
