@@ -149,9 +149,13 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
  */
 int ll_add(LinkedList* this, void* pElement)
 {
-    int returnAux = -1;
+     int returnAux = -1;
+    if(this!=NULL && !addNode(this,this->size,pElement)){
+        returnAux=0;
+    }
 
     return returnAux;
+
 }
 
 /** \brief Permite realizar el test de la funcion addNode la cual es privada
