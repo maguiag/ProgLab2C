@@ -33,9 +33,14 @@ LinkedList* ll_newLinkedList(void)
  */
 int ll_len(LinkedList* this)
 {
-    int returnAux = -1;
+   int returnAux = -1;
+    if(this!=NULL)
+    {
+        returnAux=this->size;
+    }
 
     return returnAux;
+;
 }
 
 
@@ -101,7 +106,35 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
+    if(this!=NULL && nodeIndex>=0 && nodeIndex>=this->size)//nodeindex >= al size de this(linkedlist)
+    {
+        Node* newNode;
+        Node* nodeA;
+        newNode=(Node*)malloc(sizeof(Node));
+        newNode->pElement=pElement;
 
+        if(nodeIndex==0) // si agrego en 0, agrago el primero
+        {
+            newNode->pNextNode=this->pFirstNode;
+    //entiendo que nuevonodo que apunta a nextnodo = al primernodeo de this(listalinkedlist)
+            this->pFirstNode=newNode;
+    //this que apunta a primernodo = neuevonodo
+            this->size++;
+    //au,mento tamaño de la lista
+            returnAux=0;
+        }
+        if(nodeIndex>0) // sumo a lago que ya existe
+        {
+            nodeA=getNode(this,nodeIndex-1);//nodeINdex-1 ¿nopuedo agregar en el ultimo ?
+            newNode->pNextNode=nodeA->pNextNode;
+    //nuevonodo que apunta a proximonodo=nodoa (que agrego)que apunta a proximonodo
+            nodeA->pNextNode=newNode;
+    //nodo a en nuevonodo=nuevonodo
+            this->size++;
+    //aumento amaño de this (lista linkedlist)
+            returnAux=0;
+        }
+    }
     return returnAux;
 }
 
@@ -131,7 +164,21 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
+    Node* node = malloc(sizeof(Node));
+    if(this != NULL && pElement != NULL && node != NULL)//tooodo !=NULL
+    {
+        returnAux = 0;
+        node->pElement = pElement;
+        node->pNextNode = NULL;
 
+        Node* auxNode = this->pFirstNode;
+        while(auxNode->pNextNode != NULL)
+        {
+            auxNode = auxNode->pNextNode;
+        }
+        auxNode->pNextNode = node;
+        this->size++;
+    }
     return returnAux;
 }
 
@@ -146,7 +193,15 @@ int ll_add(LinkedList* this, void* pElement)
 void* ll_get(LinkedList* this, int index)
 {
     void* returnAux = NULL;
-
+    Node* pNode;
+    if(this!=NULL && index>=0 && index<=this->size)//valido - !que index sea menor al size de la lista
+        {
+            pNode=getNode(this,index); // llamo a fc getnode
+            if(pNode!=NULL)
+            {
+                returnAux=pNode->pElement; //retorna pnode que apunta a pelement
+            }
+        }
     return returnAux;
 }
 
@@ -163,7 +218,16 @@ void* ll_get(LinkedList* this, int index)
 int ll_set(LinkedList* this, int index,void* pElement)
 {
     int returnAux = -1;
-
+    Node* pNode;
+    if(this!=NULL && index>=0 && index<=this->size) // que el index sea menor o igual al size de this(lista linkedlist)
+    {
+        pNode=getNode(this,index); //llamo a la fc get node
+        returnAux=0;
+        if(pNode!=NULL)
+        {
+            pNode->pElement=pElement; // pnode que apunta a pelemento = pelemento
+        }
+    }
     return returnAux;
 }
 
@@ -179,6 +243,32 @@ int ll_set(LinkedList* this, int index,void* pElement)
 int ll_remove(LinkedList* this,int index)
 {
     int returnAux = -1;
+    Node* pNodeOne;
+    node* pNodeTwo;
+    if(this!=NULL && index>=0 && index<=this->size)
+    {
+        if(this->size==1)// si el size es de un solo elemento
+        {
+            this->pFirstNode=NULL;// no nextnodes
+            pNodeOne=getNode(this,index);
+            free(pNodeOne);
+            this->size--;
+        }
+        if(this->size>1)
+        {
+            pNodeOne=getNode(this,index);
+            if(pNodeOne!=NULL)
+            {
+                pNodeTwo=getNode(this,index-1);//INDEX -1!!!!!!!!!!!
+                pNodeTwo->pNextNode=pNodeOne->pNextNode;
+
+                free(pNodeOne);
+                this->size--;
+            }
+        }
+        returnAux=0;
+    }
+
 
     return returnAux;
 }
