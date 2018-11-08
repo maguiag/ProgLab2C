@@ -60,7 +60,7 @@ static Node* getNode(LinkedList* this, int nodeIndex)
 
     for(indexNodoActual=0;indexNodoActual<nodeIndex;indexNodoActual++)
     {
-        if(pNode!=NUll)
+        if(pNode!=NULL)
         {
             pNode=pNode->pNextNode;
         }
@@ -243,33 +243,31 @@ int ll_set(LinkedList* this, int index,void* pElement)
 int ll_remove(LinkedList* this,int index)
 {
     int returnAux = -1;
-    Node* pNodeOne;
-    node* pNodeTwo;
+    Node* pNode1;
+    Node* pNode2;
     if(this!=NULL && index>=0 && index<=this->size)
     {
         if(this->size==1)// si el size es de un solo elemento
         {
             this->pFirstNode=NULL;// no nextnodes
-            pNodeOne=getNode(this,index);
-            free(pNodeOne);
+            pNode1=getNode(this,index);
+            free(pNode1);
             this->size--;
         }
         if(this->size>1)
         {
-            pNodeOne=getNode(this,index);
-            if(pNodeOne!=NULL)
+            pNode1=getNode(this,index);
+            if(pNode1!=NULL)
             {
-                pNodeTwo=getNode(this,index-1);//INDEX -1!!!!!!!!!!!
-                pNodeTwo->pNextNode=pNodeOne->pNextNode;
-
-                free(pNodeOne);
+                pNode2=getNode(this,index-1);//INDEX -1!!!!!!!!!!!
+                pNode2->pNextNode=pNode1->pNextNode;
+                //1 EN 2 Y ELIMINO1?
+                free(pNode1);
                 this->size--;
             }
         }
         returnAux=0;
     }
-
-
     return returnAux;
 }
 
@@ -284,6 +282,33 @@ int ll_remove(LinkedList* this,int index)
 int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
+    Node* pNode1;
+    Node* pNode2;
+    int i;
+    if(this!=NULL) // this no es null
+    {
+        if(!this->size) // sin contenido
+        {
+            returnAux=0;
+
+        }
+        else // si tiene elementos
+        {
+        for(i=0;i<this->size;i++)
+        {
+            pNode1=getNode(this,i); // fc get node
+            if(pNode1!=NULL) // si nodo1 contiene
+            {
+                pNode2=pNode1->pNextNode;// en n2 pongo n1
+                free(pNode1); //libero n1
+            }
+
+        }
+            free(pNode2); //libero n2
+            returnAux=0;
+        }
+
+    }
 
     return returnAux;
 }
@@ -299,7 +324,12 @@ int ll_clear(LinkedList* this)
 int ll_deleteLinkedList(LinkedList* this)
 {
     int returnAux = -1;
-
+    if(this!=NULL)
+    {
+        ll_clear(this); //
+        free(this);
+        returnAux=0;
+    }
     return returnAux;
 }
 
@@ -311,9 +341,21 @@ int ll_deleteLinkedList(LinkedList* this)
                         (indice del elemento) Si funciono correctamente
  *
  */
-int ll_indexOf(LinkedList* this, void* pElement)
+int ll_indexOf(LinkedList* this, void* pElement) // elemento de un nodo de linkedlist
 {
     int returnAux = -1;
+    Node* pNode;
+    int i;
+
+    for(i=0;i<this->size;i++)// que i sea menor al size de this
+    {
+        pNode=getNode(this,i); // llamo a getNOde
+        if(pNode!=NULL && pNode->pElement==pElement)
+        //valido q nodo no sea null y que pelement en nodo sea igual a pelement
+        {
+            returnAux=i; // retorno la posicion
+        }
+    }
 
     return returnAux;
 }
@@ -329,6 +371,17 @@ int ll_indexOf(LinkedList* this, void* pElement)
 int ll_isEmpty(LinkedList* this)
 {
     int returnAux = -1;
+    if(this!=NULL)
+    {
+        if(this->size==0)
+        {
+            returnAux=1;
+        }
+        else
+        {
+            returnAux=0;
+        }
+    }
 
     return returnAux;
 }
@@ -342,9 +395,14 @@ int ll_isEmpty(LinkedList* this)
                         ( 0) Si funciono correctamente
  *
  */
-int ll_push(LinkedList* this, int index, void* pElement)
+int ll_push(LinkedList* this, int index, void* pElement) // trabaja en la lista
 {
     int returnAux = -1;
+        if(this!=NULL && index>=0 && index<=this->size && )
+        {
+
+            returnAux=0;
+        }
 
     return returnAux;
 }
@@ -445,3 +503,5 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 
 }
 
+// la funcion que pasas desde adentro le tenes que pasar los ELEMENTOS no LOS NODOS
+// no sabe que existen los nodos, trabaja con los ELEMENTOS!!!!
