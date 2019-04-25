@@ -1,0 +1,117 @@
+# depslib dependency file v1.0
+1539901427 source:c:\users\user\desktop\parcial1\afiches.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"afiches.h"
+	"cliente.h"
+	"utn.h"
+
+1539901971 "
+
+1539902265 c:\users\user\desktop\parcial1\afiches.h
+	"cliente.h"
+
+1539901865 c:\users\user\desktop\parcial1\cliente.h
+
+1539171044 c:\users\user\desktop\parcial1\utn.h
+
+1539898875 source:c:\users\user\desktop\parcial1\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+	"informes.h"
+
+1539901444 h"
+
+1539901398 c:\users\user\desktop\parcial1\informes.h
+	"utn.h"
+	"cliente.h"
+	"afiches.h"
+
+1539901444 source:c:\users\user\desktop\parcial1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"cliente.h"
+	"afiches.h"
+	"informes.h"
+
+1539171044 source:c:\users\user\desktop\parcial1\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1539171044 
+
+1539901971 source:c:\users\user\desktop\parcial1\cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+
+1556234526 source:/home/alumno/Descargas/ProgLab2C-master/Parcial1/afiches.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"afiches.h"
+	"cliente.h"
+
+1556233453 /home/alumno/Descargas/ProgLab2C-master/Parcial1/afiches.h
+	"cliente.h"
+
+1556232614 /home/alumno/Descargas/ProgLab2C-master/Parcial1/cliente.h
+
+1556234949 /home/alumno/Descargas/ProgLab2C-master/Parcial1/utn.h
+
+1556232614 source:/home/alumno/Descargas/ProgLab2C-master/Parcial1/cliente.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+
+1555030757 source:/home/alumno/Descargas/ProgLab2C-master/Parcial1/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1555030757 source:/home/alumno/Descargas/ProgLab2C-master/Parcial1/informes.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"cliente.h"
+	"utn.h"
+	"informes.h"
+
+1555030757 /home/alumno/Descargas/ProgLab2C-master/Parcial1/informes.h
+	"utn.h"
+	"cliente.h"
+	"afiches.h"
+
+1556231252 source:/home/alumno/Descargas/ProgLab2C-master/Parcial1/main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+	"cliente.h"
+	"afiches.h"
+	"informes.h"
+
