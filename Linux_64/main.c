@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Controller.h"
@@ -22,41 +22,12 @@
 int main()
 {
     int option = 0;
-    LinkedList* listaEmpleados = ll_newLinkedList(); // crea lista tipo linked lista em
-    //falta
+    LinkedList* listaEmpleados = ll_newLinkedList();
     do{
         switch(option)
         {
-        //en cada case llamo a fc controller
             case 1:
-            printf("\Tamaño de lista %d", ll_len(listaEmpleados));
                 controller_loadFromText("data.csv",listaEmpleados);
-                break;
-            case 2:
-                controller_loadFromBinary("data.bin",listaEmpleados); //
-                break;
-            case 3:
-                controller_addEmployee(listaEmpleados);
-                break;
-            case 4;
-                controller_editEmployee(listaEmpleados);
-                break;
-            case 5:
-                controller_removeEmployee(listaEmpleados);
-                break;
-            case 6:
-                ll_sort(listaEmpleados, employee_criterioSortNombre())
-                controller_ListEmployee(listaEmpleados);
-                //controller_saveAsBinary("data.bin",listaEmpleados)
-                break;
-            case 7:
-                controller_sortEmployee(listaEmpleados);
-                break;
-            case 8:
-                controller_saveAsText()
-                break;
-            case 9:
-                controller_saveAsBinary();
                 break;
         }
     }while(option != 10);

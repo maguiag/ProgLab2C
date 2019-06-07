@@ -1,154 +1,18 @@
+Employee* employee_new()
+Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr,char* sueldo)
+void employee_delete()
 
-#include "Employee.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+int employee_setId(Employee* this,int id)
+int employee_getId(Employee* this,int* id)
 
-Employee* Employee_new()
-{
-    Employee* this;
-    this=malloc(sizeof(Employee));
-    return this;
-}
+int employee_setNombre(Employee* this,char* nombre)
+int employee_getNombre(Employee* this,char* nombre)
 
-void Employee_delete(Employee* this)
-{
-    free(this);
-}
+int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
+int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
 
-Employee* Employee_newConParametros(int id,char* nombre,int horasTrabajadas,int sueldo)
-{
-    Employee* this;
-    this=Employee_new();
-
-    if(
-    !Employee_setId(this,id)&&
-    !Employee_setNombre(this,nombre)&&
-    !Employee_setHorasTrabajadas(this,horasTrabajadas)&&
-    !Employee_setSueldo(this,sueldo))
-        return this;
-
-    Employee_delete(this);
-    return NULL;
-}
-
-int Employee_setId(Employee* this,int id)
-{
-    int retorno=-1;
-    static int proximoId=-1;
-
-    if(this!=NULL && id==-1)
-    {
-        proximoId++;
-        this->id=proximoId;
-        retorno=0;
-    }
-    else if(id>proximoId)
-    {
-        proximoId=id;
-        this->id=proximoId;
-        retorno=0;
-    }
-    return retorno;
-}
-
-int Employee_getId(Employee* this,int* id)
-{
-    int retorno=-1;
-    if(this!=NULL)
-    {
-        *id=this->id;
-        retorno=0;
-    }
-    return retorno;
-}
-
-int Employee_setNombre(Employee* this,char* nombre)
-{
-    int retorno=-1;
-    if(this!=NULL && nombre!=NULL)
-    {
-        strcpy(this->nombre,nombre);
-        retorno=0;
-    }
-    return retorno;
-}
-
-int Employee_getNombre(Employee* this,char* nombre)
-{
-    int retorno=-1;
-    if(this!=NULL && nombre!=NULL)
-    {
-        strcpy(nombre,this->nombre);
-        retorno=0;
-    }
-    return retorno;
-}
-
-int Employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
-{
-    int retorno=-1;
-    if(this!=NULL)
-    {
-        this->horasTrabajadas=horasTrabajadas;
-        retorno=0;
-    }
-    return retorno;
-}
-
-int Employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
-{
-    int retorno=-1;
-    if(this!=NULL)
-    {
-        *horasTrabajadas=this->horasTrabajadas;
-        retorno=0;
-    }
-    return retorno;
-}
-
-int Employee_setSueldo(Employee* this,int sueldo)
-{
-    int retorno=-1;
-    if(this!=NULL)
-    {
-        this->sueldo=sueldo;
-        retorno=0;
-    }
-    return retorno;
-}
-
-int Employee_getSueldo(Employee* this,int* sueldo)
-{
-    int retorno=-1;
-    if(this!=NULL)
-    {
-        *sueldo=this->sueldo;
-        retorno=0;
-    }
-    return retorno;
-}
-
- int employee_criterioSortNombre(void* thisA, void thisB)
- {
- char nombreA[100];
- char nombreB[100];
- int retorno =0;
-
-    employee_getNombre(thisA,nombreA);
-    employee_getNombre(thisB,nombreB);
+int employee_setSueldo(Employee* this,int sueldo)
+int employee_getSueldo(Employee* this,int* sueldo)
 
 
-    if(strcmp(nombreA,nombreB) > 0)
-    {
-       // printf("\nMAYOR");
-        retorno = 1;
-    }
-    else if(strcmp(nombreA,nombreB) < 0)
-    {
-       // printf("\nMENOR");
-        retorno = -1;
-    }
 
-    return retorno;
- }
