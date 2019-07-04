@@ -1,0 +1,39 @@
+# depslib dependency file v1.0
+1561591610 source:/home/alumno/Escritorio/EXAMEN/Parcial2Ag/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"parser.h"
+	"entregas.h"
+	"generadoInforme.h"
+
+1561586663 source:/home/alumno/Escritorio/EXAMEN/Parcial2Ag/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	"utn.h"
+
+1561586574 /home/alumno/Escritorio/EXAMEN/Parcial2Ag/utn.h
+
+1561587367 source:/home/alumno/Escritorio/EXAMEN/Parcial2Ag/LinkedList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561587332 /home/alumno/Escritorio/EXAMEN/Parcial2Ag/LinkedList.h
+
+1561591767 source:/home/alumno/Escritorio/EXAMEN/Parcial2Ag/entregas.c
+	"entregas.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1561590111 /home/alumno/Escritorio/EXAMEN/Parcial2Ag/entregas.h
+
+1561588650 /home/alumno/Escritorio/EXAMEN/Parcial2Ag/parser.h
+
+1561593068 /home/alumno/Escritorio/EXAMEN/Parcial2Ag/generadoInforme.h
+
